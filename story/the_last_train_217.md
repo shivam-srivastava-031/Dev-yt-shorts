@@ -1,6 +1,6 @@
 # The Last Train at 2:17 AM
 
-**Format:** YouTube Short, 9:16 vertical (1080×1920), 30 fps, about 58–60 s
+**Format:** YouTube Short, 9:16 vertical (1080×1920), 24 fps, 59.8 s
 **Audience:** US, general
 **Style:** Flat 2D cut-out animation (simple shapes, bold outlines, limited moves), so one beginner animator can make it on a laptop.
 
@@ -38,20 +38,20 @@ Delivery: low, close to the mic, unhurried. Leave a beat after "Empty seat." and
 
 ---
 
-## 3 & 4. Scenes and exact durations (total 58.0 s planned)
+## 3 & 4. Scenes and exact durations (final cut: 59.8 s, 24 fps, 1,435 frames)
 
-The render script fits each line to the real length of the voice clip. Scene 8 can stretch by up to 2 s so the end card gets its full hold. The final timings print when the build runs.
+These are the timings of the rendered video. `output/timing.json` has the start and end of every line.
 
-| # | Time | Dur | Scene | Narration |
-|---|------|-----|-------|-----------|
-| 1 | 0:00.0–0:05.5 | 5.5 s | **HOOK.** Close-up on a dark train window. Maya's faint reflection, and a man in a yellow raincoat right over her shoulder. Slow push-in, one light flicker. | "The man behind Maya didn't exist…" |
-| 2 | 0:05.5–0:12.5 | 7.0 s | **Platform, 10 minutes earlier.** Hanging clock reads 2:17. Two trains slide in together: the far one bright and full (a yellow raincoat in one window), the near one dim. Its side sign says NOT IN SERVICE in small red letters. Doors open; Maya trudges in; doors close. | "2:17 AM. Two trains pulled in…" |
-| 3 | 0:12.5–0:19.0 | 6.5 s | **Empty car (wide).** Maya slumped on the bench, swaying. Tunnel lights streak past the black windows. Cut to the window: just her tired reflection. | "Her car was empty…" |
-| 4 | 0:19.0–0:27.0 | 8.0 s | **The man appears** in the window behind her reflection. Heartbeat starts. Cut to wide: Maya whips her head around; camera pans to the empty seat beside her. | "Then she saw him… Empty seat." |
-| 5 | 0:27.0–0:34.0 | 7.0 s | **Flicker.** Lights stutter to black. Each time they come back he is closer. On the last flash he presses a glowing phone to the glass. | "The lights flickered…" |
-| 6 | 0:34.0–0:42.0 | 8.0 s | **The message.** Phone screen fills the frame: WRONG TRAIN. Tilt from Maya's shocked face up to the red LED sign over the door: NOT IN SERVICE. Bass hit. | "Two words. Wrong train…" |
-| 7 | 0:42.0–0:49.0 | 7.0 s | **The reveal.** In the window, a lit window frame slides away, carrying the man with it. He was on a train next to hers. Aerial view: the two tracks split. The bright train curves to DOWNTOWN, hers to RAIL YARD. | "The tracks split…" |
-| 8 | 0:49.0–0:58.0 | 9.0 s | **Into the yard.** Orange yard lights crawl past. The door lamp turns red (lock clunk). The lights die. Only Maya's eyes remain. End card: THE LAST TRAIN AT 2:17 AM. | "Hers rolled into the dark yard… Maya just wasn't on it." |
+| # | Time | Dur | Frames @24 | Scene | Narration |
+|---|------|-----|-----|-------|-----------|
+| 1 | 0:00.0–0:05.5 | 5.5 s | 0–131 | **HOOK.** Close-up on a dark train window. Maya's faint reflection, and a man in a yellow raincoat right over her shoulder. Slow push-in, one light flicker. | "The man behind Maya didn't exist…" |
+| 2 | 0:05.5–0:14.0 | 8.5 s | 132–335 | **Platform, 10 minutes earlier.** Hanging clock reads 2:17. Two trains slide in together: the far one bright and full (a yellow raincoat in one window), the near one dim. Its side sign says NOT IN SERVICE in small red letters. Doors open; Maya trudges in; doors close. | "2:17 AM. Two trains pulled in…" |
+| 3 | 0:14.0–0:19.8 | 5.8 s | 336–474 | **Empty car (wide).** Maya slumped on the bench, swaying. Tunnel lights streak past the black windows. Cut to the window: just her tired reflection. | "Her car was empty…" |
+| 4 | 0:19.8–0:27.6 | 7.8 s | 475–662 | **The man appears** in the window behind her reflection. Heartbeat starts. Cut to wide: Maya whips her head around; camera pans to the empty seat beside her. | "Then she saw him… Empty seat." |
+| 5 | 0:27.6–0:34.6 | 7.0 s | 663–830 | **Flicker.** Lights stutter to black. Each time they come back he is closer. On the last flash he presses a glowing phone to the glass. | "The lights flickered…" |
+| 6 | 0:34.6–0:42.1 | 7.5 s | 831–1010 | **The message.** Phone screen fills the frame: WRONG TRAIN. Tilt from Maya's shocked face up to the red LED sign over the door: NOT IN SERVICE. Bass hit. | "Two words. Wrong train…" |
+| 7 | 0:42.1–0:48.6 | 6.5 s | 1011–1166 | **The reveal.** In the window, a lit window frame slides away, carrying the man with it. He was on a train next to hers. Aerial view: the two tracks split. The bright train curves to DOWNTOWN, hers to RAIL YARD. | "The tracks split…" |
+| 8 | 0:48.6–0:59.8 | 11.2 s (end card from 0:57.9) | 1167–1434 | **Into the yard.** Orange yard lights crawl past. The door lamp turns red (lock clunk). The lights die. Only Maya's eyes remain. End card: THE LAST TRAIN AT 2:17 AM. | "Hers rolled into the dark yard… Maya just wasn't on it." |
 
 ---
 
@@ -130,6 +130,6 @@ Look: hood up, yellow duffle raincoat with toggle buttons, light skin, brown hai
 The build script draws every layer separately and saves it to `assets/`, so each tool has something to start from.
 
 1. **Krita (art).** Open the PNGs in `assets/art/` and paint over them in your own style. Keep each background and each character pose on its own layer. Export as PNG with transparency, using the same file names.
-2. **OpenToonz (animation).** Import the character PNGs as levels. Rig Maya's head on a pivot at the neck (for the Scene 3 sway and the Scene 4 head turn). Use the Xsheet timings in the table above at 30 fps. Hand-animate only three things: the door slide, Maya's walk bob, and the man's flicker jumps (just swap scale and position on blackout frames). Everything else is camera moves.
+2. **OpenToonz (animation).** Import the character PNGs as levels. Rig Maya's head on a pivot at the neck (for the Scene 3 sway and the Scene 4 head turn). Use the Xsheet frame numbers in the table above (24 fps). Hand-animate only three things: the door slide, Maya's walk bob, and the man's flicker jumps (just swap scale and position on blackout frames). Everything else is camera moves.
 3. **Audacity (voice and sound).** `assets/audio/narration/*.wav` is a scratch voice (Windows TTS). Record your own read line by line over it, then apply Noise Reduction, a High-Pass Filter at 80 Hz, Compressor, and Normalize to −1 dB. Export WAV. `sfx_track.wav` and `music_track.wav` are separate stems.
-4. **Shotcut (edit).** Use 1080×1920 at 30 fps. Put the video on V1, narration on A1, SFX on A2 and music on A3 (about −14 dB, ducked under the voice). Add captions with a Text filter, using the timings from the build log. Export H.264 MP4 with AAC at 192 kbps.
+4. **Shotcut (edit).** Open `the_last_train_217.mlt` (already set up as 1080×1920, 24 fps). Use 1080×1920 at 24 fps. Put the video on V1, narration on A1, SFX on A2 and music on A3 (about −14 dB, ducked under the voice). Add captions with a Text filter, using the timings from the build log. Export H.264 MP4 with AAC at 192 kbps.

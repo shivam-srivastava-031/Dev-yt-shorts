@@ -1253,12 +1253,13 @@ def build_audio(TL, E, raw):
     mus = norm(mus, 1.0) * 0.16 * duck
     fx = fx * (1 - 0.3 * np.clip(env / 0.06, 0, 1))
     v2 = np.vstack([voice, voice])
-    mix = v2 + fx + mus
-    mix = np.tanh(mix * 1.1) / np.tanh(1.1)
-    mix = norm(mix, 0.95)
-    for name, x in (("narration_track.wav", v2), ("sfx_track.wav", fx), ("music_track.wav", mus), ("full_mix.wav", mix)):
-        write_wav(AUDIO_DIR / name, norm(x, 0.95) if name != "full_mix.wav" else x)
-    return AUDIO_DIR / "full_mix.wav"
+    # Stems keep their mixed levels, so V+SFX+music on a Shotcut timeline == full_mix.
+    g = 0.9 / max(np.max(np.abs(v2 + fx + mus)), 1e-6)
+    stems = {"narration_track.wav": v2 * g, "sfx_track.wav": fx * g, "music_track.wav": mus * g}
+    for name, x in stems.items():
+        write_wav(AUDIO_DIR / name, x)
+    write_wav(AUDIO_DIR / "full_mix.wav", sum(stems.values()))
+    return {k: AUDIO_DIR / k for k in stems}, AUDIO_DIR / "full_mix.wav"
 
 
 # --------------------------------------------------------------------------- rendering
@@ -1567,25 +1568,45 @@ def main():
         print(f"stills -> {sd}")
         return
 
-    print("[3/4] audio mix...")
-    mix = build_audio(TL, E, raw)
+    print("[3/5] audio mix...")
+    stems, mix = build_audio(TL, E, raw)
 
-    print("[4/4] rendering video...")
+    print(f"[4/5] rendering picture ({FPS} fps)...")
     ff = shutil.which("ffmpeg") or "ffmpeg"
-    out = OUT_DIR / "the_last_train_217.mp4"
     nframes = int(round(E["end"] * FPS))
+    picture = OUT_DIR / f"picture_only_{FPS}fps.mp4"
     cmd = [ff, "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
-           "-i", "-", "-i", str(mix), "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p",
-           "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
-           "-t", f"{nframes / FPS:.3f}", "-movflags", "+faststart", str(out)]
+           "-i", "-", "-c:v", "libx264", "-preset", "medium", "-crf", "14", "-pix_fmt", "yuv420p", str(picture)]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     for i in range(nframes):
         proc.stdin.write(render_frame(i / FPS).tobytes())
-        if i % 150 == 0:
+        if i % 120 == 0:
             print(f"  frame {i}/{nframes}", flush=True)
     proc.stdin.close()
     if proc.wait() != 0:
         sys.exit("ffmpeg failed")
+
+    print("[5/5] edit + final render...")
+    sys.path.insert(0, str(Path(__file__).parent))
+    from shotcut_project import find_melt, render_with_melt, write_mlt
+    mlt = write_mlt(ROOT / "the_last_train_217.mlt", picture,
+                    [("Narration", stems["narration_track.wav"], 0.0), ("SFX", stems["sfx_track.wav"], 0.0),
+                     ("Music", stems["music_track.wav"], 0.0)], nframes, FPS, W, H)
+    print(f"  Shotcut project -> {mlt}")
+    out = OUT_DIR / f"the_last_train_217_{FPS}fps.mp4"
+    edit = OUT_DIR / "_edit.mp4"
+    melt = find_melt()
+    if melt:
+        print(f"  rendering with Shotcut's melt: {melt}")
+        render_with_melt(melt, mlt, edit)
+    else:
+        print("  melt not found -> muxing with ffmpeg")
+        subprocess.run([ff, "-y", "-loglevel", "error", "-i", str(picture), "-i", str(mix), "-c:v", "copy",
+                        "-c:a", "aac", "-b:a", "192k", "-shortest", str(edit)], check=True)
+    subprocess.run([ff, "-y", "-loglevel", "error", "-i", str(edit), "-c:v", "copy",
+                    "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+                    "-movflags", "+faststart", str(out)], check=True)
+    edit.unlink()
     print(f"\nDONE -> {out}")
 
 

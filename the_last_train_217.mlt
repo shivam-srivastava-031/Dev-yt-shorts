@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mlt LC_NUMERIC="C" version="7.0.0" title="The Last Train at 2:17 AM" producer="main_bin">
+  <profile description="Vertical 1080x1920 24fps" width="1080" height="1920" progressive="1" sample_aspect_num="1" sample_aspect_den="1" display_aspect_num="9" display_aspect_den="16" frame_rate_num="24" frame_rate_den="1" colorspace="709"/>
+  <playlist id="main_bin">
+    <property name="xml_retain">1</property>
+  </playlist>
+  <producer id="black" in="0" out="1434">
+    <property name="length">1435</property>
+    <property name="resource">0</property>
+    <property name="mlt_service">color</property>
+    <property name="mlt_image_format">rgba</property>
+  </producer>
+  <playlist id="background">
+    <entry producer="black" in="0" out="1434"/>
+  </playlist>
+  <producer id="vid" in="0" out="1434">
+    <property name="length">1435</property>
+    <property name="resource">C:/Users/shiva/OneDrive/Desktop/New folder/Dev-yt-shorts/output/picture_only_24fps.mp4</property>
+    <property name="mlt_service">avformat</property>
+  </producer>
+  <playlist id="playlist0">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V1</property>
+    <entry producer="vid" in="0" out="1434"/>
+  </playlist>
+  <producer id="aud1" in="0" out="1434">
+    <property name="length">1435</property>
+    <property name="resource">C:/Users/shiva/OneDrive/Desktop/New folder/Dev-yt-shorts/assets/audio/narration_track.wav</property>
+    <property name="mlt_service">avformat</property>
+    <filter id="vol1">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">0.0</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">audioGain</property>
+    </filter>
+  </producer>
+  <playlist id="playlist1">
+    <property name="shotcut:audio">1</property>
+    <property name="shotcut:name">A1 Narration</property>
+    <entry producer="aud1" in="0" out="1434"/>
+  </playlist>
+  <producer id="aud2" in="0" out="1434">
+    <property name="length">1435</property>
+    <property name="resource">C:/Users/shiva/OneDrive/Desktop/New folder/Dev-yt-shorts/assets/audio/sfx_track.wav</property>
+    <property name="mlt_service">avformat</property>
+    <filter id="vol2">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">0.0</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">audioGain</property>
+    </filter>
+  </producer>
+  <playlist id="playlist2">
+    <property name="shotcut:audio">1</property>
+    <property name="shotcut:name">A2 SFX</property>
+    <entry producer="aud2" in="0" out="1434"/>
+  </playlist>
+  <producer id="aud3" in="0" out="1434">
+    <property name="length">1435</property>
+    <property name="resource">C:/Users/shiva/OneDrive/Desktop/New folder/Dev-yt-shorts/assets/audio/music_track.wav</property>
+    <property name="mlt_service">avformat</property>
+    <filter id="vol3">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">0.0</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">audioGain</property>
+    </filter>
+  </producer>
+  <playlist id="playlist3">
+    <property name="shotcut:audio">1</property>
+    <property name="shotcut:name">A3 Music</property>
+    <entry producer="aud3" in="0" out="1434"/>
+  </playlist>
+  <tractor id="tractor0" title="The Last Train at 2:17 AM" in="0" out="1434">
+    <property name="shotcut">1</property>
+    <track producer="background"/>
+    <track producer="playlist0"/>
+    <track producer="playlist1" hide="video"/>
+    <track producer="playlist2" hide="video"/>
+    <track producer="playlist3" hide="video"/>
+    <transition id="vblend">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">qtblend</property>
+      <property name="always_active">1</property>
+    </transition>
+    <transition id="mix1">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="mix2">
+      <property name="a_track">0</property>
+      <property name="b_track">2</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="mix3">
+      <property name="a_track">0</property>
+      <property name="b_track">3</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="mix4">
+      <property name="a_track">0</property>
+      <property name="b_track">4</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+  </tractor>
+</mlt>
