@@ -536,7 +536,7 @@ def door_panel(h):
 INT_WINDOWS = ((40, 400, 500, 900), (580, 400, 1040, 900))
 
 
-def bg_interior():
+def bg_interior(poles=True):
     c = Cv(W, H)
     c.rect(0, 0, W, H, fill=C("#b9c2b6"))
     c.rect(0, 0, W, 252, fill=C("#7b827a"))
@@ -670,7 +670,14 @@ def led_matrix(text, pitch=8, rad=3.2, on=(255, 59, 48), off=(58, 13, 11)):
 TILT_H = 3000
 
 
-def tilt_composite():
+def draw_maya_closeup(c, dy=0):
+    c.ell(540, 3020 - dy, 470, 420, fill=JACKET, outline=INK, width=6)
+    c.poly([(440, 2620 - dy), (640, 2620 - dy), (600, TILT_H - dy), (480, TILT_H - dy)], fill=SCRUB)
+    c.rect(480, 2560 - dy, 600, 2680 - dy, fill=SKIN_M, outline=INK, width=4)
+    draw_maya_head(c, 540, 2330 - dy, 250, "shock", (0, -1))
+
+
+def tilt_composite(with_maya=True):
     c = Cv(W, TILT_H)
     c.rect(0, 0, W, TILT_H, fill=C("#b9c2b6"))
     c.rect(0, 0, W, 250, fill=C("#7b827a"))
@@ -681,10 +688,8 @@ def tilt_composite():
         c.rect(x0, 630, x0 + 338, 1820, fill=C("#c4cac4"), outline=INK, width=4)
         c.rect(x0 + 50, 710, x0 + 288, 1150, fill=C("#0d1522"), outline=INK, width=4, r=20)
     c.rect(0, 1820, W, TILT_H, fill=C("#5c6266"))
-    c.ell(540, 3020, 470, 420, fill=JACKET, outline=INK, width=6)
-    c.poly([(440, 2620), (640, 2620), (600, TILT_H), (480, TILT_H)], fill=SCRUB)
-    c.rect(480, 2560, 600, 2680, fill=SKIN_M, outline=INK, width=4)
-    draw_maya_head(c, 540, 2330, 250, "shock", (0, -1))
+    if with_maya:
+        draw_maya_closeup(c)
     img = c.out()
     led = led_matrix("NOT IN SERVICE")
     comp(img, led, 540 - led.width / 2, 445 - led.height / 2)
