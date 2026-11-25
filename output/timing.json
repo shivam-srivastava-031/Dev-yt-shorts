@@ -1,0 +1,266 @@
+{
+  "scenes": [
+    {
+      "id": "s1",
+      "start": 0.0,
+      "dur": 5.5,
+      "speed": 0.94,
+      "lines": [
+        {
+          "id": "s1_0",
+          "cap": "The man behind Maya didn't exist.",
+          "hl": false,
+          "start": 0.12,
+          "end": 2.505535774593526
+        },
+        {
+          "id": "s1_1",
+          "cap": "She could only see him in the window.",
+          "hl": false,
+          "start": 3.0470352680079125,
+          "end": 5.2
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "start": 5.5,
+      "dur": 7.0,
+      "speed": 1.329425311791383,
+      "lines": [
+        {
+          "id": "s2_0",
+          "cap": "2:17 AM.",
+          "hl": false,
+          "start": 5.8,
+          "end": 7.381574395616403
+        },
+        {
+          "id": "s2_1",
+          "cap": "Two trains pulled in, side by side.",
+          "hl": false,
+          "start": 7.5815743956164035,
+          "end": 9.762183483157747
+        },
+        {
+          "id": "s2_2",
+          "cap": "Exhausted, Maya jumped on the closest one.",
+          "hl": false,
+          "start": 9.962183483157746,
+          "end": 12.299118110320162
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "start": 12.5,
+      "dur": 6.5,
+      "speed": 0.94,
+      "lines": [
+        {
+          "id": "s3_0",
+          "cap": "Her car was empty.",
+          "hl": false,
+          "start": 12.8,
+          "end": 14.123153374825108
+        },
+        {
+          "id": "s3_1",
+          "cap": "Just the hum of the rails, and her tired reflection.",
+          "hl": false,
+          "start": 14.823153374825107,
+          "end": 18.498311381290105
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "start": 19.0,
+      "dur": 8.0,
+      "speed": 0.94,
+      "lines": [
+        {
+          "id": "s4_0",
+          "cap": "Then she saw him.",
+          "hl": false,
+          "start": 19.3,
+          "end": 20.4716842765475
+        },
+        {
+          "id": "s4_1",
+          "cap": "A man in a yellow raincoat, right behind her.",
+          "hl": false,
+          "start": 20.83169456908059,
+          "end": 24.239688972515722
+        },
+        {
+          "id": "s4_2",
+          "cap": "She turned.",
+          "hl": false,
+          "start": 24.599699265048812,
+          "end": 25.446324439941463
+        },
+        {
+          "id": "s4_3",
+          "cap": "Empty seat.",
+          "hl": false,
+          "start": 25.806334732474554,
+          "end": 26.700000000000003
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "start": 27.0,
+      "dur": 7.0,
+      "speed": 0.94,
+      "lines": [
+        {
+          "id": "s5_0",
+          "cap": "The lights flickered.",
+          "hl": false,
+          "start": 27.3,
+          "end": 28.445148839677717
+        },
+        {
+          "id": "s5_1",
+          "cap": "In the glass, he was closer, pressing his phone to the window.",
+          "hl": false,
+          "start": 29.058035412746662,
+          "end": 33.7
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "start": 34.0,
+      "dur": 8.0,
+      "speed": 0.94,
+      "lines": [
+        {
+          "id": "s6_0",
+          "cap": "Two words.",
+          "hl": false,
+          "start": 34.3,
+          "end": 35.19086698509191
+        },
+        {
+          "id": "s6_1",
+          "cap": "WRONG TRAIN.",
+          "hl": true,
+          "start": 35.930037310432446,
+          "end": 36.85699248966726
+        },
+        {
+          "id": "s6_2",
+          "cap": "Above the door, the sign read:",
+          "hl": false,
+          "start": 37.446162815007796,
+          "end": 39.81078384072305
+        },
+        {
+          "id": "s6_3",
+          "cap": "NOT IN SERVICE.",
+          "hl": true,
+          "start": 40.549954166063586,
+          "end": 41.699999999999996
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "start": 42.0,
+      "dur": 7.0,
+      "speed": 0.94,
+      "lines": [
+        {
+          "id": "s7_0",
+          "cap": "The tracks split.",
+          "hl": false,
+          "start": 42.3,
+          "end": 43.48456602499155
+        },
+        {
+          "id": "s7_1",
+          "cap": "He was never behind her.",
+          "hl": false,
+          "start": 44.184566024991554,
+          "end": 45.90037149611617
+        },
+        {
+          "id": "s7_2",
+          "cap": "He was on the other train.",
+          "hl": false,
+          "start": 46.600371496116175,
+          "end": 48.178602788633185
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "start": 49.0,
+      "dur": 10.899999999999999,
+      "speed": 0.94,
+      "lines": [
+        {
+          "id": "s8_0",
+          "cap": "Hers rolled into the dark yard.",
+          "hl": false,
+          "start": 49.3,
+          "end": 51.334278959810874
+        },
+        {
+          "id": "s8_1",
+          "cap": "Doors locked.",
+          "hl": false,
+          "start": 51.63427895981087,
+          "end": 52.56121001592126
+        },
+        {
+          "id": "s8_2",
+          "cap": "The last train at 2:17 left on time.",
+          "hl": false,
+          "start": 52.76121001592126,
+          "end": 55.83490616104597
+        },
+        {
+          "id": "s8_3",
+          "cap": "Maya just wasn't on it.",
+          "hl": true,
+          "start": 56.58490616104597,
+          "end": 58.08345877358035
+        }
+      ]
+    }
+  ],
+  "events": {
+    "s1_flicker": 2.7,
+    "s2_screech": 6.7,
+    "s2_chime": 8.35,
+    "s2_open": 8.65,
+    "s2_walk0": 9.0,
+    "s2_walk1": 10.9,
+    "s2_chime2": 11.05,
+    "s2_close": 11.55,
+    "s3_cut": 14.673153374825107,
+    "s4_reveal": 19.75,
+    "s4_turn": 24.47969926504881,
+    "s4_pan": 25.556334732474554,
+    "s5_flicks": [
+      27.5,
+      27.78,
+      28.4,
+      28.6
+    ],
+    "s5_tap": 30.558035412746662,
+    "s6_tilt": 37.346162815007794,
+    "s6_sign": 40.49995416606359,
+    "s7_switch": 42.25,
+    "s7_aerial": 46.450371496116176,
+    "s8_lock": 51.63427895981087,
+    "s8_dark": 55.95490616104597,
+    "s8_cut": 56.38490616104597,
+    "title": 58.53345877358035,
+    "end": 59.9
+  }
+}
