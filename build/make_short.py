@@ -429,7 +429,7 @@ def glow_layer(size, draw_fn, radius):
     return g.filter(ImageFilter.GaussianBlur(radius))
 
 
-def bg_platform():
+def bg_platform(clock=True):
     c = Cv(W, H)
     c.rect(0, 0, W, 252, fill=C("#121418"))
     for x in (60, 420, 780):
@@ -466,7 +466,7 @@ def bg_platform():
         c.line([(x, 1508), (x - 40, H)], C("#45484c"), 3)
     c.ell(250, 1700, 150, 26, fill=C("#6d7a86"))
     c.ell(860, 1860, 190, 30, fill=C("#6a7783"))
-    for x in (470, 610):
+    for x in (470, 610) if clock else ():
         c.rect(x - 6, 0, x + 6, 270, fill=C("#2b2e33"))
     c.rect(400, 262, 680, 382, fill=C("#0b0b0b"), outline=C("#3a3d42"), width=6, r=12)
     c.text(522, 322, "2:17", MONO, 92, C("#ffb020"))
@@ -570,7 +570,7 @@ def bg_interior():
         c.ell(x, y, 3, 2, fill=C("#6f767b") if rng.random() < .5 else C("#4d5357"))
     c.rect(866, 1150, 1000, 1290, fill=TOTE, outline=INK, width=3, r=14)
     c.arc(933, 1150, 50, 60, 180, 360, C("#7a5a1c"), 8)
-    for x in (110, 1012):
+    for x in (110, 1012) if poles else ():
         c.rect(x - 13, 0, x + 13, H, fill=C("#c9ced2"), outline=C("#6f767c"), width=3)
         c.rect(x - 4, 0, x + 2, H, fill=C("#eef1f3"))
     img = c.out().convert("RGB")
